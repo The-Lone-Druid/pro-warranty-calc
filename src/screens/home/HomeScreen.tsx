@@ -54,11 +54,11 @@ const HomeScreen = (props: Props) => {
       ) {
         const payablePrice =
           (productAgeInMonths / values.totalWarranty) * values.productPrice;
-        setCalculatedPrice(payablePrice);
+        setCalculatedPrice(parseFloat(payablePrice.toFixed(2)));
       } else if (productAgeInMonths <= values.freeReplacementWarranty) {
         setCalculatedPrice(0);
       } else {
-        setCalculatedPrice(values.productPrice);
+        setCalculatedPrice(parseFloat(values.productPrice.toFixed(2)));
       }
     },
   });
@@ -163,7 +163,7 @@ const HomeScreen = (props: Props) => {
           {calculatedPrice || calculatedPrice === 0 ? (
             <Typography variant={"h6"} className="flex items-center">
               Payable price: <i className="material-icons">currency_rupee</i>
-              {calculatedPrice.toFixed(2)}
+              {calculatedPrice}
             </Typography>
           ) : null}
         </div>
