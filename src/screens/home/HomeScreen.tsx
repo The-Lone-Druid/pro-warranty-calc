@@ -146,9 +146,19 @@ const HomeScreen = (props: Props) => {
         </div>
         <div>
           {productAgeInMonths && productAgeInMonths >= 0 ? (
-            <Typography variant={"h6"}>
-              Product age: {productAgeInMonths} (in months)
-            </Typography>
+            <>
+              <Typography variant={"body2"} fontWeight={"bold"}>
+                (Under{" "}
+                {productAgeInMonths <=
+                warrantyForm.values.freeReplacementWarranty
+                  ? "Free Replacement Warranty"
+                  : "Pro Rata Warranty"}
+                )
+              </Typography>
+              <Typography variant={"h6"}>
+                Product age: {productAgeInMonths} Months
+              </Typography>
+            </>
           ) : null}
           {calculatedPrice || calculatedPrice === 0 ? (
             <Typography variant={"h6"} className="flex items-center">
